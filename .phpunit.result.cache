@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":215:{a:2:{s:7:"defects";a:0:{}s:5:"times";a:2:{s:55:"Tests\Unit\Service\FacilityServiceTest::testGetApiToken";d:0.005;s:84:"Tests\Unit\Service\FacilityServiceTest::testIncidentServiceIsAvailableAfterConstruct";d:0.001;}}}
