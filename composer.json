@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "ext-json": "*",
         "guzzlehttp/guzzle": "^7.0",
         "monolog/monolog": "^2.2",
         "netresearch/jsonmapper": "^4.0",

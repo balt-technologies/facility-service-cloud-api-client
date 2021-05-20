@@ -7,6 +7,7 @@ namespace FacilityCloud\Api;
 use FacilityCloud\Api\Interfaces\ApiHandler;
 use FacilityCloud\Api\Interfaces\ApiRequest as ApiRequestInterface;
 use FacilityCloud\Api\Interfaces\ApiResponse as ApiResponseInterface;
+use FacilityCloud\Interfaces\Services\CredentialStorage;
 use GuzzleHttp\Client;
 use Monolog\Logger;
 use Psr\Http\Client\ClientInterface;
@@ -15,17 +16,20 @@ use Psr\Log\LoggerInterface;
 class AbstractFacilityServiceApi implements ApiHandler
 {
 
-    public const API_BASE_URI = 'https://api.facilityservice.cloud/api';
+    public const API_BASE_URI = 'https://api.facilityservice.cloud';
 
     public ClientInterface $client;
     public LoggerInterface $logger;
+    private CredentialStorage $credentialStorage;
 
-    public function __construct(?ClientInterface $client, ?LoggerInterface $logger) {
+    public function __construct(CredentialStorage $credentialStorage, ?ClientInterface $client = null, ?LoggerInterface $logger = null) {
+
+        $this->credentialStorage = $credentialStorage;
 
         if ($client !== null) {
             $this->client = $client;
         } else {
-            $this->client = new Client(['base_uri' => self::API_BASE_URI]);
+            $this->client = new Client(['base_uri' => self::API_BASE_URI, 'verify' => false]);
         }
 
         if ($logger !== null) {
@@ -48,9 +52,11 @@ class AbstractFacilityServiceApi implements ApiHandler
 
             $response = $this->client->request(
                 $request->method(),
-                $request->uri()
-                [] // @todo: implement the options
+                $request->uri(),
+                ['headers' => ['Authorization' => 'Bearer ' . $this->credentialStorage->get()]] // @todo: implement the options
             );
+
+            // header
 
             $this->logger->debug('End API call', [
                 'status' => $response->getStatusCode(),

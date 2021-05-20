@@ -1,7 +1,7 @@
 <?php
 
 
-namespace FacilityCloud\Api\Requests\Incidents;
+namespace FacilityCloud\Api\Requests\User;
 
 
 use FacilityCloud\Api\Exceptions\ApiException;
@@ -11,17 +11,17 @@ use FacilityCloud\Api\Responses\Incidents\AllIncidentsResponse;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
-class AllIncidentsRequest implements ApiRequest
+class UserLoginRequest implements ApiRequest
 {
 
     public function method(): string
     {
-        return 'get';
+        return 'post';
     }
 
     public function uri(): string
     {
-        return '/api/v1/incident';
+        return '/api/v1/login';
     }
 
     public function data(): array

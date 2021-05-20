@@ -11,4 +11,5 @@ interface ApiResponse
 
     public function response(): ResponseInterface;
 
+    public function data(): object;
 }

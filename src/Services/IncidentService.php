@@ -2,6 +2,7 @@
 
 namespace FacilityCloud\Services;
 
+use FacilityCloud\Api\IncidentApi;
 use FacilityCloud\Interfaces\Models\Incident as IncidentInterface;
 use FacilityCloud\Interfaces\Models\Entity as EntityInterface;
 use FacilityCloud\Interfaces\Models\Issue as IssueInterface;

@@ -18,6 +18,15 @@ class AllIncidentsResponse implements ApiResponse
 
     public function response(): ResponseInterface
     {
-        // TODO: Implement response() method.
+        return $this->response;
+    }
+
+
+    public function data(): object
+    {
+        $data = $this->response->getBody()->getContents();
+
+        var_dump($data);
+        return json_decode($data);
     }
 }

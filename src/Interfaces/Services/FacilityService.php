@@ -1,4 +1,5 @@
 <?php
+
 namespace FacilityCloud\Interfaces\Services;
 
 use Psr\Log\LoggerInterface;
