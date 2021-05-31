@@ -2,7 +2,6 @@
 
 namespace FacilityCloud\Api\Interfaces;
 
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 

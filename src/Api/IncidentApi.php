@@ -4,6 +4,7 @@
 namespace FacilityCloud\Api;
 
 use FacilityCloud\Api\Requests\Incidents\AllIncidentsRequest;
+use FacilityCloud\Api\Requests\Incidents\IncidentViewRequest;
 use FacilityCloud\Api\Responses\Incidents\AllIncidentsResponse;
 use FacilityCloud\Models\Incident;
 use JsonMapper;
@@ -28,5 +29,20 @@ class IncidentApi extends AbstractFacilityServiceApi
 
         return $mapper->mapArray($response->data()->data, array(), Incident::class);
     }
+
+
+    function viewIncident(string $incident): array
+    {
+        $request = new IncidentViewRequest($incident);
+
+        /** @var AllIncidentsResponse $response */
+        $response = $this->handle($request);
+
+        $mapper = new JsonMapper();
+
+        return $mapper->mapArray($response->data()->data, array(), Incident::class);
+    }
+
+
 
 }

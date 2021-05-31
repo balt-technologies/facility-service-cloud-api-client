@@ -1,13 +1,13 @@
 <?php
 
 
-namespace FacilityCloud\Api\Responses\Incidents;
+namespace FacilityCloud\Api\Responses\Status;
 
 
 use FacilityCloud\Api\Interfaces\ApiResponse;
 use Psr\Http\Message\ResponseInterface;
 
-class AllIncidentsResponse implements ApiResponse
+class AllStatusResponse implements ApiResponse
 {
     public ResponseInterface $response;
 
@@ -20,7 +20,6 @@ class AllIncidentsResponse implements ApiResponse
     {
         return $this->response;
     }
-
 
     public function data(): object
     {

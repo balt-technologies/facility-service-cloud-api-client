@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Service;
+namespace Tests\Feature;
 
 use FacilityCloud\Api\IncidentApi;
 use FacilityCloud\Services\FileSystem;
@@ -15,5 +15,14 @@ class IncidentApiTest extends TestCase
         $incidents = $incidentApi->getIncidents();
 
         self::assertNotNull($incidents);
+    }
+
+    public function testViewIncident()
+    {
+        $incidentApi = new IncidentApi(new FileSystem(__DIR__));
+
+        $incident = $incidentApi->viewIncident();
+
+        self::assertNotNull($incident);
     }
 }
